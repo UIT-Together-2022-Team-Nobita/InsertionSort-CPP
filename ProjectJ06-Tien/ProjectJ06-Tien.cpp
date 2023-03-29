@@ -108,28 +108,16 @@ bool Inp(LIST& l, string filename, int i)
 }
 void InsertionSort(LIST& l)
 {
-	NODE* p = l.pHead->pNext;
-	l.pHead->pNext = NULL;
-	while (p != NULL)
+	for (NODE* k = l.pHead->pNext; k != NULL; k = k->pNext)
 	{
-		NODE* q = l.pHead;
-		while (q != NULL && q->info < p->info)
-			q = q->pNext;
-		NODE* next = p->pNext;
-		if (q == l.pHead)
-		{
-			p->pNext = l.pHead;
-			l.pHead->pPrev = p;
-			l.pHead = p;
-		}
+		int x = k->info;
+		NODE* vt;
+		for (vt = k->pPrev; vt != NULL && vt->info > x; vt = vt->pPrev)
+			vt->pNext->info = vt->info;
+		if (vt == NULL)
+			l.pHead->info = x;
 		else
-		{
-			p->pNext = q;
-			p->pPrev = q->pPrev;
-			q->pPrev->pNext = p;
-			q->pPrev = p;
-		}
-		p = next;
+			vt->pNext->info = x;
 	}
 }
 int NodeCount(LIST l)

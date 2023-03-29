@@ -29,7 +29,7 @@ bool Outp(LIST, string);
 
 int main()
 {
-	cout << "Project G5." << endl;
+	cout << "Project J05." << endl;
 	LIST l;
 	for (int i = 1; i <= 13; i++)
 	{
@@ -102,23 +102,41 @@ bool Inp(LIST& l, string filename, int i)
 	}
 	return true;
 }
-void InsertionSort(LIST& l)
+void InsertionSort(LIST& l) 
 {
 	NODE* p = l.pHead;
-	while (p != NULL)
+	NODE* q = p->pNext;
+	while (q != NULL) 
 	{
-		NODE* q = p->pNext;
-		while (q != NULL)
+		NODE* temp = l.pHead;
+		NODE* prev = NULL;
+		while (temp != q) 
 		{
-			if (q->info < p->info)
+			if (temp->info > q->info) 
 			{
-				int temp = q->info;
-				q->info = p->info;
-				p->info = temp;
+				if (prev != NULL) 
+				{
+					p->pNext = q->pNext;
+					q->pNext = temp;
+					prev->pNext = q;
+				}
+				else 
+				{
+					p->pNext = q->pNext;
+					q->pNext = temp;
+					l.pHead = q;
+				}
+				q = p->pNext;
+				break;
 			}
+			prev = temp;
+			temp = temp->pNext;
+		}
+		if (temp == q) 
+		{
+			p = q;
 			q = q->pNext;
 		}
-		p = p->pNext;
 	}
 }
 int NodeCount(LIST l)
