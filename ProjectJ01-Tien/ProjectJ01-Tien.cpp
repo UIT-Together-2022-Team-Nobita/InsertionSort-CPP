@@ -50,7 +50,7 @@ bool Input(int a[], int& n, string filename)
 
 void InsertionSort(int a[], int n)
 {
-	for(int step = 1;step<=n-1;step++)
+	for (int step = 1; step <= n - 1; step++)
 	{
 		int x = a[step];
 		int vt = 0;
