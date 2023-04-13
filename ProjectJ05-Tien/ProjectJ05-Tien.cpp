@@ -102,7 +102,7 @@ bool Inp(LIST& l, string filename, int i)
 	}
 	return true;
 }
-void InsertionSort(LIST& l) 
+void InsertionSort(LIST& l)
 {
 	NODE* p = l.pHead;
 	NODE* q = p->pNext;
