@@ -106,21 +106,21 @@ void InsertionSort(LIST& l)
 {
 	NODE* p = l.pHead;
 	NODE* q = p->pNext;
-	while (q != NULL) 
+	while (q != NULL)
 	{
 		NODE* temp = l.pHead;
 		NODE* prev = NULL;
-		while (temp != q) 
+		while (temp != q)
 		{
-			if (temp->info > q->info) 
+			if (temp->info > q->info)
 			{
-				if (prev != NULL) 
+				if (prev != NULL)
 				{
 					p->pNext = q->pNext;
 					q->pNext = temp;
 					prev->pNext = q;
 				}
-				else 
+				else
 				{
 					p->pNext = q->pNext;
 					q->pNext = temp;
@@ -132,7 +132,7 @@ void InsertionSort(LIST& l)
 			prev = temp;
 			temp = temp->pNext;
 		}
-		if (temp == q) 
+		if (temp == q)
 		{
 			p = q;
 			q = q->pNext;
